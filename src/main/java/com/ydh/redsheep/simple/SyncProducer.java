@@ -13,25 +13,24 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
 public class SyncProducer {
 
     public static void main(String[] args) throws Exception {
-        //Instantiate with a producer group name.
-        DefaultMQProducer producer = new DefaultMQProducer("simpleSync");
-        producer.setNamesrvAddr("192.168.1.105:9876");
+        // 实例化一个生产组名称
+        DefaultMQProducer producer = new DefaultMQProducer("simpleSyncProducer");
+        // 指定名称服务器地址
+        producer.setNamesrvAddr("172.16.165.182:9876");
         producer.setInstanceName("producer");
 //        producer.setVipChannelEnabled(false);
-        //Launch the instance.
+        // 启动生产者
         producer.start();
         for (int i = 0; i < 100; i++) {
-            //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("TopicTest" /* Topic */,
-                    "TagA" /* Tag */,
-                    ("Hello RocketMQ " +
-                            i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
+            // 创建一个消息
+            Message msg = new Message("TopicTest", "TagA",
+                    ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET)
             );
-            //Call send message to deliver message to one of brokers.
+            // 发送消息给brokers
             SendResult sendResult = producer.send(msg);
             System.out.printf("%s%n", sendResult);
         }
-        //Shut down once the producer instance is not longer in use.
+        // 关闭生产者
         producer.shutdown();
     }
 
