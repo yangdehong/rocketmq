@@ -20,7 +20,7 @@ public class OrderedConsumer {
     public static void main(String[] args) throws Exception {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("order");
 
-        consumer.setNamesrvAddr("192.168.1.105:9876");
+        consumer.setNamesrvAddr("172.16.165.182:9876");
         consumer.setInstanceName("producer");
 
 

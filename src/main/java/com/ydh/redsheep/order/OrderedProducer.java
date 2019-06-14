@@ -10,7 +10,7 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
 import java.util.List;
 
 /**
- * @description: 发送简单的消息的生产者
+ * @description: 发送简单的消息的生产者-如何发送/接收全局和部分有序的消息
  * @author: yangdehong
  * @version: 2018/6/10.
  */
@@ -20,7 +20,7 @@ public class OrderedProducer {
         //Instantiate with a producer group name.
         DefaultMQProducer producer = new DefaultMQProducer("order");
 
-        producer.setNamesrvAddr("192.168.1.105:9876");
+        producer.setNamesrvAddr("172.16.165.182:9876");
         producer.setInstanceName("producer");
 
         //Launch the instance.
